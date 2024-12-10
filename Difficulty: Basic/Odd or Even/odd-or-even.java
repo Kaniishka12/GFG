@@ -22,9 +22,11 @@ class GFG {
 class Solution {
     static String oddEven(int n) {
         // code here
-        if((n&(1))!=0){
+        if((n&1)!=0){
             return "odd";
         }
-        return "even";
+        else{
+            return "even";
+        }
     }
 }
