@@ -24,10 +24,10 @@ class GFG {
 class Solution {
     static int setBit(int n) {
         int i=0;
-        while((n&(1<<i))!=0){
-            i++;
-        }
-        n=n|(1<<i);
-        return n;
+         while((n&(1<<i))!=0){
+             i++;
+         }
+         n=n|(1<<i);
+         return n;
     }
 }
