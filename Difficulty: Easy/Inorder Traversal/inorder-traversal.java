@@ -112,18 +112,35 @@ class Node {
 */
 class Solution {
     // Function to return a list containing the inorder traversal of the tree.
+    // Function to return a list containing the inorder traversal of the tree.
     ArrayList<Integer> inOrder(Node root) {
         ArrayList<Integer> result = new ArrayList<>();
-        inorderHelper(root, result);
+        Node curr = root;
+
+        while (curr != null) {
+            if (curr.left == null) {
+                result.add(curr.data); // Visit node
+                curr = curr.right; // Move to right subtree
+            } else {
+                // Find the inorder predecessor (rightmost node in left subtree)
+                Node pred = curr.left;
+                while (pred.right != null && pred.right != curr) {
+                    pred = pred.right;
+                }
+
+                if (pred.right == null) {
+                    // Create a temporary link to the current node
+                    pred.right = curr;
+                    curr = curr.left;
+                } else {
+                    // Restore tree and visit node
+                    pred.right = null;
+                    result.add(curr.data);
+                    curr = curr.right;
+                }
+            }
+        }
         return result;
     }
-
-    private void inorderHelper(Node node, ArrayList<Integer> result) {
-        if (node == null) {
-            return;
-        }
-        inorderHelper(node.left, result);  // Visit left subtree
-        result.add(node.data);             // Visit root
-        inorderHelper(node.right, result); // Visit right subtree
-    }
 }
+
