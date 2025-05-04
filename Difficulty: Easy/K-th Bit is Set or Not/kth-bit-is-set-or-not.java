@@ -6,17 +6,24 @@ import java.util.*;
 
 
 // } Driver Code Ends
-// User function Template for Java
 
 class CheckBit {
-    // Function to check if Kth bit is set or not.
     static boolean checkKthBit(int n, int k) {
-        if((n&(1<<k))!=0){
+        // Your code here
+        
+         int val = (1 << k);
+        
+        // If AND operation of n and 
+        // value is non-zero, it means
+        // k'th bit is set 
+        if ((n & val) != 0) {
             return true;
-        }
+        } 
+        
         return false;
     }
 }
+
 
 //{ Driver Code Starts.
 
