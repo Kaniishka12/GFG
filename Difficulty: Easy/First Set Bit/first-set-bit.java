@@ -24,19 +24,17 @@ System.out.println("~");
 // } Driver Code Ends
 
 
-//User function Template for Java
+// User function Template for Java
 
-class Solution
-{
-    //Function to find position of first set bit in the given number.
-    public static int getFirstSetBit(int n){
-            
+class Solution {
+    // Function to find position of first set bit in the given number.
+    public static int getFirstSetBit(int n) {
+
         // Your code here
-       int i=0;
-       while((n&(1<<i))==0){
-           i++;
-       }
-       return i+1;
-            
+        int i=0;
+        while((n&(1<<i))==0){
+            i++;
+        }
+        return i+1;
     }
 }
