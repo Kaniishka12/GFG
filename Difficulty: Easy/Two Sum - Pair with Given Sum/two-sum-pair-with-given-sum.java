@@ -38,17 +38,14 @@ public class Main {
 class Solution {
     boolean twoSum(int arr[], int target) {
         // code here
-    int n=arr.length;
-       Arrays.sort(arr);
-        int left = 0;int right = n - 1;
-        while (left < right) {
-            int sum = arr[left] + arr[right];
-            if (sum == target) {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for (int i=0;i<arr.length;i++){
+            int com=target-arr[i];
+            if(map.containsKey(com)){
                 return true;
-            } else if (sum < target) left++;
-            else right--;
+            }
+            map.put(arr[i],i);
         }
         return false;
-        
     }
 }
