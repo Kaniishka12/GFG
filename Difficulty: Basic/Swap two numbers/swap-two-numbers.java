@@ -21,17 +21,18 @@ class GFG{
 // } Driver Code Ends
 
 
-//User function Template for Java
+// User function Template for Java
 
-class Solution{
-    static List<Integer> get(int a,int b)
-    {
+class Solution {
+    static List<Integer> get(int a, int b) {
+        // code here
         a^=b;
         b^=a;
         a^=b;
-        List <Integer> arr= new ArrayList<>();
-        arr.add(a);
-        arr.add(b);
-        return arr;
+        ArrayList<Integer> aa=new ArrayList<>();
+        aa.add(a);
+        aa.add(b);
+        return aa;
+        
     }
 }
