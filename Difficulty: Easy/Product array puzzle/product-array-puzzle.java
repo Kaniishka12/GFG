@@ -16,7 +16,7 @@ class GFG {
                 arr[i] = Integer.parseInt(inputLine[i]);
             }
             Solution ob = new Solution();
-            long[] ans = new long[n];
+            int[] ans = new int[n];
             ans = ob.productExceptSelf(arr);
 
             for (int i = 0; i < n; i++) {
@@ -33,32 +33,23 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
-    public static long[] productExceptSelf(int arr[]) {
+    public static int[] productExceptSelf(int arr[]) {
         // code here
-         // Array to store all left multiplication
-     // Array to store all left multiplication
-    long[] left = new long[arr.length];
-
-    // Array to store all right multiplication
-    long[] right = new long[arr.length];
-
-    left[0] = 1; // Initialize left[0] to 1
-    for (int i = 1; i < arr.length; i++) {
-      left[i] = left[i - 1] * arr[i - 1];
-    }
-
-    right[arr.length - 1] = 1; // Initialize right[last] to 1
-    for (int i = arr.length - 2; i >= 0; i--) {
-      right[i] = right[i + 1] * arr[i + 1];
-    }
-
-    long[] ans = new long[arr.length];
-    for (int i = 0; i < arr.length; i++) {
-      ans[i] = left[i] * right[i]; // Multiply left and right arrays
-    }
-
-    return ans;
+        int[] left=new int[arr.length];
+        int[] right=new int[arr.length];
+        left[0]=1;
+        for(int i=1;i<arr.length;i++){
+            left[i]=left[i-1]*arr[i-1];
+        }
+         right[(arr.length)-1]=1;
+        for(int i=arr.length-2;i>=0;i--){
+            right[i]=right[i+1]*arr[i+1];
+        }
+        int[] ans=new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            ans[i]=left[i]*right[i];
+        }
+        return ans;
     }
 }
