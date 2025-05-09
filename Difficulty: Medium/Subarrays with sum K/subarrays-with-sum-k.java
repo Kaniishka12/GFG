@@ -43,27 +43,23 @@ public class Main {
 class Solution {
     public int countSubarrays(int arr[], int k) {
         // code here
-        HashMap<Integer, Integer> prefixSumMap = new HashMap<>();
+        int cs=0;
+        int c=0;
         
-
-        prefixSumMap.put(0, 1);
-
-        int count = 0;
-        int currentSum = 0;
-
-      
-        for (int num : arr) {
-            currentSum += num;
-
-            
-            if (prefixSumMap.containsKey(currentSum - k)) {
-                count += prefixSumMap.get(currentSum - k);
+        HashMap<Integer,Integer> hm=new HashMap<>();
+        hm.put(0,1);
+        for(int num:arr){
+            cs+=num;
+            if(hm.containsKey(cs-k)){
+          c=c+hm.get(cs-k);
+          
+          
             }
-
-           
-            prefixSumMap.put(currentSum, prefixSumMap.getOrDefault(currentSum, 0) + 1);
+            hm.put(cs,hm.getOrDefault(cs,0)+1);
+            
+            
         }
-
-        return count;
+        return c;
+        
     }
 }
