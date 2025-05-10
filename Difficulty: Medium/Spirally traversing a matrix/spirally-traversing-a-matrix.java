@@ -31,42 +31,52 @@ class GFG {
 class Solution {
     // Function to return a list of integers denoting spiral traversal of matrix.
     public ArrayList<Integer> spirallyTraverse(int mat[][]) {
-        // code here
-         ArrayList<Integer> a = new ArrayList<>();
+        ArrayList<Integer> a = new ArrayList<>();
+
+        // Edge case: empty matrix
         if (mat == null || mat.length == 0 || mat[0].length == 0) {
             return a;
         }
 
-        int sr = 0; // Start row
-        int sc = 0; // Start column
-        int er = mat.length - 1; // End row
-        int ec = mat[0].length - 1; // End column
+        int sr = 0;
+        int sc = 0;
+        int er = mat.length - 1;
+        int ec = mat[0].length - 1;
 
         while (sr <= er && sc <= ec) {
+            // Traverse top row
             for (int j = sc; j <= ec; j++) {
                 a.add(mat[sr][j]);
             }
+
+            // Traverse right column
             for (int i = sr + 1; i <= er; i++) {
                 a.add(mat[i][ec]);
             }
+
+            // Traverse bottom row
             for (int j = ec - 1; j >= sc; j--) {
                 if (sr == er) {
                     break;
                 }
                 a.add(mat[er][j]);
             }
-            for (int i = er - 1; i >= sr + 1; i--) {
+
+            // Traverse left column
+            for (int i = er - 1; i > sr; i--) {
                 if (sc == ec) {
                     break;
                 }
                 a.add(mat[i][sc]);
             }
+
             sr++;
             sc++;
             er--;
             ec--;
         }
 
-      return a;
+        return a;
     }
 }
+
