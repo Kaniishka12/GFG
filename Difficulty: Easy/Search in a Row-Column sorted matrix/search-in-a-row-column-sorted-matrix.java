@@ -34,30 +34,19 @@ class gfg {
 class Solution {
     public static boolean matSearch(int mat[][], int x) {
         // your code here
-       
-    if (mat == null || mat.length == 0 || mat[0].length == 0) {
-        return false; // Handle empty matrix edge case
-    }
-
-    int n = mat.length;     // Number of rows
-    int m = mat[0].length;  // Number of columns
-
-    int row = 0;         // Start at the first row
-    int col = m - 1;     // Start at the last column
-
-    // Perform binary search-like traversal
-    while (row < n && col >= 0) {
-        if (mat[row][col] == x) {
-            return true; // Found the element
-        } else if (mat[row][col] > x) {
-            col--; // Move left
-        } else {
-            row++; // Move down
+        int rows=mat.length;
+        int cols=mat[0].length;
+        int row=0;
+        int col=cols-1;
+        while(row<rows && col>=0){
+            if(mat[row][col]==x){
+                return true;
+            }else if(mat[row][col]>x){
+             col--;
+            }else{
+                row++;
+            }
         }
+        return false;
     }
-
-    return false; // Element not found
-}
-
-    
 }
