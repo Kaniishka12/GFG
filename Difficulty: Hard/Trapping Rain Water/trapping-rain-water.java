@@ -10,7 +10,7 @@ class Sorting {
             String[] str = (br.readLine()).trim().split(" ");
             int arr[] = new int[str.length];
             for (int i = 0; i < str.length; i++) arr[i] = Integer.parseInt(str[i]);
-            System.out.println(new Solution().trappingWater(arr));
+            System.out.println(new Solution().maxWater(arr));
             System.out.println("~");
         }
     }
@@ -19,24 +19,24 @@ class Sorting {
 
 
 class Solution {
-    public int trappingWater(int arr[]) {
+    public int maxWater(int arr[]) {
         // code here
         int n=arr.length;
-        int left_max[]= new int[n];
-        left_max[0]=arr[0];
+        int [] left=new int[n];
+        left[0]=arr[0];
         for(int i=1;i<n;i++){
-            left_max[i]=Math.max(arr[i],left_max[i-1]);
+            left[i]=Math.max(arr[i],left[i-1]);
         }
-        int right_max[]=new int[n];
-        right_max[n-1]=arr[n-1];
+        int [] right=new int[n];
+        right[n-1]=arr[n-1];
         for(int i=n-2;i>=0;i--){
-            right_max[i]= Math.max(arr[i],right_max[i+1]);
+            right[i]=Math.max(arr[i],right[i+1]);
         }
-        int trappedWater=0;
+        int tp=0;
         for(int i=0;i<n;i++){
-            int waterLevel=Math.min(left_max[i],right_max[i]);
-            trappedWater+=waterLevel-arr[i];
+            int wl=Math.min(left[i],right[i]);
+            tp+=wl-arr[i];
         }
-        return trappedWater;
+        return tp;
     }
 }
