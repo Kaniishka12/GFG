@@ -33,14 +33,14 @@ class Solution {
     public static boolean areAnagrams(String s1, String s2) {
 
         // Your code here
-          if (s1.length() != s2.length()) { // Check if lengths are different
+        if(s1.length()!=s2.length()){
             return false;
         }
         char[] c=s1.toCharArray();
         char[] d=s2.toCharArray();
-        int n=c.length;
         Arrays.sort(c);
         Arrays.sort(d);
+        int n=d.length;
         for(int i=0;i<n;i++){
             if(c[i]!=d[i]){
                 return false;
