@@ -38,13 +38,12 @@ public class Main {
 class Solution {
     boolean twoSum(int arr[], int target) {
         // code here
-        HashMap<Integer,Integer> map=new HashMap<>();
-        for (int i=0;i<arr.length;i++){
-            int com=target-arr[i];
-            if(map.containsKey(com)){
+        HashMap<Integer,Integer> hp=new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            if(hp.containsKey(target-arr[i])){
                 return true;
             }
-            map.put(arr[i],i);
+            hp.put(arr[i],i);
         }
         return false;
     }
