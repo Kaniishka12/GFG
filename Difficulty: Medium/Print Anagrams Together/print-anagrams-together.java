@@ -3,36 +3,24 @@ import java.util.*;
 
 
 // } Driver Code Ends
+
 class Solution {
     public ArrayList<ArrayList<String>> anagrams(String[] arr) {
         // code here
-        
-        
-        // Create a HashMap to group strings by their sorted form
-        Map<String, ArrayList<String>> map = new HashMap<>();
-
-        // Iterate through each string in the input array
-        for (String s : arr) {
-            // Convert the string to a character array and sort it
-            char[] charArray = s.toCharArray();
-            Arrays.sort(charArray);
-
-            // Create a key by converting the sorted character array back to a string
-            String key = new String(charArray);
-
-            // If the key doesn't exist in the map, initialize a new list
-            if (!map.containsKey(key)) {
-                map.put(key, new ArrayList<>());
+        Map<String,ArrayList<String>> hp=new HashMap<>();
+        for(String s:arr){
+            char[] a=s.toCharArray();
+            Arrays.sort(a);
+            String key=String.valueOf(a);
+            if(!hp.containsKey(key)){
+                hp.put(key,new ArrayList<>());
             }
-
-            // Add the original string to the list corresponding to the key
-            map.get(key).add(s);
+            hp.get(key).add(s);
         }
-
-        // Convert the values of the map to an ArrayList<ArrayList<String>>
-        return new ArrayList<>(map.values());
+        return new ArrayList<>(hp.values());
     }
 }
+
 
 
 //{ Driver Code Starts.
