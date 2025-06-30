@@ -41,19 +41,18 @@ class Solution {
     // Function to return a list containing the DFS traversal of the graph.
     public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
         // Code here
-        int n=adj.size();
-        boolean[] visited=new boolean[n];
         ArrayList<Integer> result=new ArrayList<>();
-        dfsHelper(0, adj, visited, result);
+        boolean[] visited=new boolean[adj.size()];
+        helper(adj,result,visited,0);
         return result;
+        
     }
-    private void dfsHelper(int node,ArrayList<ArrayList<Integer>> adj,boolean[] visited, 
-    ArrayList<Integer> result){
+    public void helper(ArrayList<ArrayList<Integer>> adj,ArrayList<Integer> result,boolean[] visited,int node){
         result.add(node);
         visited[node]=true;
-        for (int i:adj.get(node)){
-            if(!visited[i]){
-                dfsHelper(i, adj, visited, result);
+        for(int n:adj.get(node)){
+            if(!visited[n]){
+                helper(adj,result,visited,n);
             }
         }
     }
