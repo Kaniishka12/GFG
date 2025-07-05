@@ -56,44 +56,42 @@ class Main {
 
 
 class Solution {
+
     public static ArrayList<Integer> topoSort(int V, int[][] edges) {
-        // Step 1: Build the adjacency list
+        // Adjacency list
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-        for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
+        for (int i = 0; i < V; i++) {
+            adj.add(new ArrayList<>());
+        }
 
         for (int[] edge : edges) {
-            int u = edge[0], v = edge[1];
-            adj.get(u).add(v);
+            adj.get(edge[0]).add(edge[1]);
         }
 
         boolean[] visited = new boolean[V];
         Stack<Integer> stack = new Stack<>();
 
-        // Step 2: Call DFS for unvisited nodes
         for (int i = 0; i < V; i++) {
             if (!visited[i]) {
-                dfs(i, visited, stack, adj);
+                dfs(i, adj, visited, stack);
             }
         }
 
-        // Step 3: Pop from stack to get topological sort
-        ArrayList<Integer> topo = new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
         while (!stack.isEmpty()) {
-            topo.add(stack.pop());
+            result.add(stack.pop());
         }
 
-        return topo;
+        return result;
     }
 
-    private static void dfs(int node, boolean[] visited, Stack<Integer> stack, ArrayList<ArrayList<Integer>> adj) {
+    private static void dfs(int node, ArrayList<ArrayList<Integer>> adj, boolean[] visited, Stack<Integer> stack) {
         visited[node] = true;
-
         for (int neighbor : adj.get(node)) {
             if (!visited[neighbor]) {
-                dfs(neighbor, visited, stack, adj);
+                dfs(neighbor, adj, visited, stack);
             }
         }
-
-        stack.push(node); // All dependencies done, push to stack
+        stack.push(node);
     }
 }
