@@ -191,18 +191,17 @@ class GFG {
 class Solution {
     Map <Node,Node> mp=new HashMap<>();
     Node cloneGraph(Node node) {
-        // code here
-         if(node==null){
+        if(node==null){
             return null;
         }
-       
-       Node n=new Node(node.val);
-       mp.put(node,n);
-       for(Node nei:node.neighbors){
-        if(!mp.containsKey(nei))cloneGraph(nei);
-        n.neighbors.add(mp.get(nei));
-       }
-       return n;
+        Node n=new Node(node.val);
+        mp.put(node,n);
+        for(Node nei:node.neighbors){
+            if(!mp.containsKey(nei)) cloneGraph(nei);
+            n.neighbors.add(mp.get(nei));
+            
+        }
+        return n;
         
     }
 }
