@@ -1,64 +1,24 @@
-//{ Driver Code Starts
-import java.io.*;
-import java.util.*;
-
-class Main {
-    public static void main(String args[]) throws IOException {
-        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(read.readLine().trim()); // Read number of test cases
-
-        while (t-- > 0) {
-            String line = read.readLine().trim(); // Read the array input
-            String[] numsStr = line.split(" ");   // Split the input string by spaces
-            int[] nums =
-                new int[numsStr.length]; // Convert string array to integer array
-            for (int i = 0; i < numsStr.length; i++) {
-                nums[i] = Integer.parseInt(numsStr[i]);
-            }
-
-            int target = Integer.parseInt(read.readLine().trim()); // Read target sum
-
-            Solution ob = new Solution();
-            boolean ans =
-                ob.hasTripletSum(nums, target); // Call the function and store result
-            System.out.println(ans ? "true" : "false"); // Output the result
-        }
-    }
-}
-
-// } Driver Code Ends
-
-
-// User function Template for Java
-
 class Solution {
-    // Should return true if there is a triplet with sum equal
-    // to x in arr[], otherwise false
     public static boolean hasTripletSum(int arr[], int target) {
-        // Your code Here
+        // code Here
+        if(arr==null||arr.length<3){
+            return false;
+        }
         Arrays.sort(arr);
-        int n = arr.length;
-
-        // Iterate over the array and use two-pointer approach
-        for (int i = 0; i < n - 2; i++) {
-            int left = i + 1, right = n - 1;
-
-            // Find if there's a pair with the required sum
-            while (left < right) {
-                int currentSum = arr[i] + arr[left] + arr[right];
-
-                if (currentSum == target) {
-                    return true; // Triplet found
-                } else if (currentSum < target) {
-                    left++; // Increase the sum
-                } else {
-                    right--; // Decrease the sum
-                }
+        for(int i=0;i<arr.length;i++){
+            int l=i+1;
+            int r=arr.length-1;
+            while(l<r){
+            int s=arr[i]+arr[l]+arr[r];
+            if(s==target){
+                return true;
+            }else if (s<target){
+                l++;
+            }else{
+                r--;
+            }
             }
         }
-
-        // No triplet found
         return false;
-        
     }
 }
